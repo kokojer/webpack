@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "allowJs": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "alwaysStrict": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "noEmitOnError": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop":true,
+    "paths": {
+      "~/*": ["./*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
