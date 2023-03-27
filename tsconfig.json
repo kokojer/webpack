@@ -20,8 +20,11 @@
     "noUnusedLocals": true,
     // Показывать ошибку, если где-то найдены неиспользуемые параметры.
     "noUnusedParameters": true,
+    "noEmitOnError": true,
     // Разрешить импортировать модули не имеющие внутри себя "import default"?
     "allowSyntheticDefaultImports": true,
+    // Выходная директория
+    "outDir": "./dist",
     // алиасы
     "paths": {
       "~/*": ["./*"]

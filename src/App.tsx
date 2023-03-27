@@ -1,11 +1,6 @@
-import {Custom1, Custom2} from "~/XXX";
-
 const CustomFloatingEdge = () => {
-    return <div>
-        <Custom1 />
-        <h1>Hello!</h1>
-        <Custom2 />
-    </div>
+    const x = 5123123;
+    return (<h1>{x}</h1>)
 }
 
 export default CustomFloatingEdge

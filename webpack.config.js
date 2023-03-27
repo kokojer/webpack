@@ -1,13 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+    // точка входа
     entry: {
         main: path.resolve(__dirname, './src/Index.tsx'),
     },
-    target: 'web',
     resolve: {
+        // какие расширения файлов резолвим
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        // путь до нод модулей
         modules: [
             path.join(__dirname, 'node_modules')
         ],
@@ -15,6 +18,7 @@ module.exports = {
             '~': path.resolve(__dirname, 'src/'),
         },
     },
+    // точка выхода
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
@@ -23,6 +27,7 @@ module.exports = {
     module: {
         rules: [
             {
+                // преобразование jsx и tsx файлов
                 test: /\.[jt]sx?$/,
                 loader: 'esbuild-loader',
                 options: {
@@ -37,9 +42,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.html')
         }),
+        new Dotenv(),
     ],
     devtool: 'source-map',
-    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    mode: 'development',
     devServer: {
         hot: true,
     }
