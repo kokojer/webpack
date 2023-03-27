@@ -1,20 +1,28 @@
 {
   "compilerOptions": {
+    // Тип кода создаваемого итогового файла.
     "target": "es2018",
-    "module": "esnext",
+    // поддержка ".tsx" файлов
+    // Отличие "react-jsx" от "react" в том что первый по новее и не требует импорта реакта в итоговой компиляции,
+    // а также использует улучшенную производительность
     "jsx": "react-jsx",
+    // Путь до базовой папки для поиска не относительных путей до файлов
     "baseUrl": "src",
+    // Разрешать компилировать файлы с JavaScript-кодом?
     "allowJs": true,
+    // Включить ли все строги проверки типов сразу: noImplicitAny, noImplicitThis, alwaysStrict, strictNullChecks, strictFunctionTypes, strictPropertyInitialization?
     "strict": true,
+    // Определить способ поиска модулей в папках
     "moduleResolution": "node",
-    "alwaysStrict": true,
+    // Сообщить об ошибке в случае обнаружения проваливания в конструкции switch-case?
     "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true,
-    "noEmitOnError": false,
+    // Показывать ошибку, если где-то найдены неиспользуемые локальные значения.
     "noUnusedLocals": true,
+    // Показывать ошибку, если где-то найдены неиспользуемые параметры.
     "noUnusedParameters": true,
+    // Разрешить импортировать модули не имеющие внутри себя "import default"?
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop":true,
+    // алиасы
     "paths": {
       "~/*": ["./*"]
     }

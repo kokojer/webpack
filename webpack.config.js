@@ -7,7 +7,13 @@ module.exports = {
     },
     target: 'web',
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        modules: [
+            path.join(__dirname, 'node_modules')
+        ],
+        alias: {
+            '~': path.resolve(__dirname, 'src/'),
+        },
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
