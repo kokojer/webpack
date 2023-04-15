@@ -7,7 +7,7 @@
     // а также использует улучшенную производительность
     "jsx": "react-jsx",
     // Путь до базовой папки для поиска не относительных путей до файлов
-    "baseUrl": "src",
+    "baseUrl": "./",
     // Разрешать компилировать файлы с JavaScript-кодом?
     "allowJs": true,
     // Включить ли все строги проверки типов сразу: noImplicitAny, noImplicitThis, alwaysStrict, strictNullChecks, strictFunctionTypes, strictPropertyInitialization?
@@ -27,7 +27,8 @@
     "outDir": "./dist",
     // алиасы
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["src/*"],
+      "@assets/*": ["assets/*"],
     }
   },
   "exclude": ["node_modules"]
