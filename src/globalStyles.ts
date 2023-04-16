@@ -11,6 +11,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Font2';
     src: url(${font2}) format('woff2');
   }
+  h1{
+    font-family: Font1,serif;
+  }
   h2{
     font-family: Font1,serif;
   }

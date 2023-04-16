@@ -1,10 +1,6 @@
 import "../styles0.css";
 const Comp = () => {
-  return (
-    <div>
-      <h1>ппацуацуацйрцукпцуа</h1>
-    </div>
-  );
+  return <div style={{ fontFamily: "Font2, serif" }}>Footer</div>;
 };
 
 export default Comp;

@@ -1,6 +1,6 @@
 import "../styles1.css";
 const Test = () => {
-  const x = 124124124;
+  const x = "text";
   return (
     <div>
       <h1>{x}</h1>

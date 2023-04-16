@@ -6,11 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(
   document.querySelector("#root") as HTMLElement
 );
+const basePath = process.env.BASE_PATH ?? "";
 root.render(
   <>
     <GlobalStyle />
-    <BrowserRouter>
+    <BrowserRouter basename={`/${basePath}`}>
       <Routes>
+        <Route path="*" element={<>404</>} />
         <Route path="/" element={<App />} />
         <Route path="/home" element={<App />} />
       </Routes>
