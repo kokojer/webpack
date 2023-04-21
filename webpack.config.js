@@ -4,6 +4,28 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
+const resolveTsconfigPathsToAlias = ({
+  tsconfigPath = "./tsconfig.json",
+  webpackConfigBasePath = __dirname,
+} = {}) => {
+  const { paths, baseUrl } = require(tsconfigPath).compilerOptions;
+
+  const aliases = {};
+
+  Object.keys(paths).forEach((item) => {
+    const key = item.replace("/*", "");
+    const value = path.resolve(
+      webpackConfigBasePath,
+      baseUrl,
+      paths[item][0].replace("/*", "").replace("*", "")
+    );
+
+    aliases[key] = value;
+  });
+
+  return aliases;
+};
+
 module.exports = {
   // точка входа
   entry: {
@@ -14,10 +36,7 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     // путь до нод модулей
     modules: [path.join(__dirname, "node_modules")],
-    alias: {
-      "~": path.resolve(__dirname, "src/"),
-      "@assets": path.resolve(__dirname, "assets/"),
-    },
+    alias: resolveTsconfigPathsToAlias(),
   },
   // точка выхода
   output: {
@@ -103,5 +122,13 @@ module.exports = {
   devServer: {
     hot: true,
     historyApiFallback: true,
+    proxy: {
+      "/api": {
+        target: "https://api.github.com",
+        pathRewrite: { "^/api": "" },
+        secure: false,
+        changeOrigin: true,
+      },
+    },
   },
 };
