@@ -25,11 +25,13 @@
     "allowSyntheticDefaultImports": true,
     // Выходная директория
     "outDir": "./dist",
+    "sourceMap": true,
     // алиасы
     "paths": {
       "~/*": ["src/*"],
       "@assets/*": ["assets/*"],
-    }
+    },
+    "esModuleInterop": true
   },
   "exclude": ["node_modules"]
 }
