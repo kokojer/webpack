@@ -1,27 +1,25 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import Dotenv from "dotenv-webpack";
 
-module.exports = {
+const commonConfig = {
   // точка входа
   entry: {
-    main: path.resolve(__dirname, "./src/Index.tsx"),
+    main: path.resolve(__dirname, "../../src/Index.tsx"),
   },
   resolve: {
     // какие расширения файлов резолвим
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     // путь до нод модулей
-    modules: [path.join(__dirname, "node_modules")],
+    modules: [path.join(__dirname, "../../node_modules")],
     alias: {
-      "~": path.resolve(__dirname, "src/"),
-      "@assets": path.resolve(__dirname, "assets/"),
+      "~": path.resolve(__dirname, "../../src/"),
+      "@assets": path.resolve(__dirname, "../../assets/"),
     },
   },
   // точка выхода
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../../dist"),
     filename: "[name].bundle.js",
     publicPath: "/",
     clean: true,
@@ -62,17 +60,11 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.svg$/i,
@@ -89,19 +81,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "index.html"),
+      template: path.join(__dirname, "../../src", "index.html"),
     }),
     new Dotenv(),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
-    }),
-    new CssMinimizerPlugin(),
   ],
-  devtool: "source-map",
-  mode: "development",
-  devServer: {
-    hot: true,
-    historyApiFallback: true,
-  },
 };
+
+export default commonConfig;
